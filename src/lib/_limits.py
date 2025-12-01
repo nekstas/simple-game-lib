@@ -1,0 +1,12 @@
+class Board:
+    MAX_WIDTH = 50
+    MAX_HEIGHT = 50
+
+    MAX_PIXELS_WIDTH = 500
+    MAX_PIXELS_HEIGHT = 500
+
+
+class InfoText:
+    MAX_LENGTH = 30
+
+MAX_STEPS_PER_SECOND = 60
