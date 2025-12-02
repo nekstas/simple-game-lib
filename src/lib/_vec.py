@@ -16,7 +16,7 @@ class Vec:
         return str(self)
 
     def __eq__(self, other: Vec):
-        import src.lib._asserts as _asserts
+        import lib._asserts as _asserts
         _asserts.assert_vector(other)
 
         return (self.x, self.y) == (other.x, other.y)
@@ -34,31 +34,31 @@ class Vec:
         return Vec(-self.x, -self.y)
 
     def __add__(self, other: Vec) -> Vec:
-        import src.lib._asserts as _asserts
+        import lib._asserts as _asserts
         _asserts.assert_vector(other)
 
         return Vec(self.x + other.x, self.y + other.y)
 
     def __sub__(self, other: Vec) -> Vec:
-        import src.lib._asserts as _asserts
+        import lib._asserts as _asserts
         _asserts.assert_vector(other)
 
         return Vec(self.x - other.x, self.y - other.y)
 
     def __mul__(self, other: int) -> Vec:
-        import src.lib._asserts as _asserts
+        import lib._asserts as _asserts
 
         _asserts.assert_vector_coord(other)
         return Vec(self.x * other, self.y * other)
 
     def __rmul__(self, other: int) -> Vec:
-        import src.lib._asserts as _asserts
+        import lib._asserts as _asserts
 
         _asserts.assert_vector_coord(other)
         return Vec(self.x * other, self.y * other)
 
     def __floordiv__(self, other: int) -> Vec:
-        import src.lib._asserts as _asserts
+        import lib._asserts as _asserts
 
         _asserts.assert_vector_coord(other)
         assert other != 0, 'Нельзя делить на 0.'
@@ -66,7 +66,7 @@ class Vec:
         return Vec(self.x // other, self.y // other)
 
     def __mod__(self, other: Vec) -> Vec:
-        import src.lib._asserts as _asserts
+        import lib._asserts as _asserts
         _asserts.assert_vector(other)
         assert other != Vec(0, 0), 'Нельзя делить с остатком на 0.'
 
@@ -78,7 +78,7 @@ class Vec:
 
     @x.setter
     def x(self, x: int):
-        import src.lib._asserts as _asserts
+        import lib._asserts as _asserts
         _asserts.assert_vector_coord(x)
         self._x = x
 
@@ -88,6 +88,6 @@ class Vec:
 
     @y.setter
     def y(self, y: int):
-        import src.lib._asserts as _asserts
+        import lib._asserts as _asserts
         _asserts.assert_vector_coord(y)
         self._y = y

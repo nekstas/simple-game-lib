@@ -1,9 +1,9 @@
 import typing as _typing
 
-import src.lib._limits as _limits
-import src.lib._colors as _colors
-import src.lib._state as _state
-import src.lib._vec as _vec
+import lib._limits as _limits
+import lib._colors as _colors
+import lib._state as _state
+import lib._vec as _vec
 
 
 def _assert_board_size(value: _typing.Any, name: str, limit: int):

@@ -3,9 +3,9 @@ from __future__ import annotations
 import copy as _copy
 import typing as _typing
 
-import src.lib._types as _types
-import src.lib._colors as _colors
-import src.lib._vec as _vec
+import lib._types as _types
+import lib._colors as _colors
+import lib._vec as _vec
 
 
 class StateData:
@@ -58,7 +58,7 @@ class State:
 
     @info_text.setter
     def info_text(self, info_text: str):
-        import src.lib._asserts as _asserts
+        import lib._asserts as _asserts
 
         _asserts.assert_info_text(info_text)
         self._info_text = info_text
@@ -70,7 +70,7 @@ class State:
 
     @board.setter
     def board(self, board: _types.Board):
-        import src.lib._asserts as _asserts
+        import lib._asserts as _asserts
 
         self._assert_not_initialized('board')
 

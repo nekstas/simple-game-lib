@@ -1,12 +1,12 @@
 import typing as _typing
 
-import src.lib._vec as _vec
-import src.lib._state as _state
-import src.lib._rand as _rand
-import src.lib._impl as _impl
-import src.lib._flet_impl as _flet_impl
+import lib._vec as _vec
+import lib._state as _state
+import lib._rand as _rand
+import lib._impl as _impl
+import lib._flet_impl as _flet_impl
 
-from src.lib._colors import (
+from lib._colors import (
     WHITE,
     BLACK,
     RED,
@@ -14,7 +14,7 @@ from src.lib._colors import (
     BLUE,
     DEFAULT_COLOR,
 )
-from src.lib._keys import (
+from lib._keys import (
     KEY_UP,
     KEY_DOWN,
     KEY_LEFT,
@@ -24,7 +24,7 @@ from src.lib._keys import (
     KEY_S,
     KEY_D
 )
-from src.lib._consts import (
+from lib._consts import (
     GAME_CONTINUE,
     GAME_OVER
 )

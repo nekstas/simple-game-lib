@@ -5,11 +5,11 @@ from collections.abc import Coroutine as _Coroutine
 import flet as _ft
 import flet.canvas as _cv
 
-import src.lib._types as _types
-import src.lib._consts as _consts
-import src.lib._state as _state
-import src.lib._utils as _utils
-import src.lib._asserts as _asserts
+import lib._types as _types
+import lib._consts as _consts
+import lib._state as _state
+import lib._utils as _utils
+import lib._asserts as _asserts
 
 _TargetFunc = _typing.Callable[[_ft.Page], _Coroutine]
 InitFunc = _typing.Callable[[_state.State, bool], None]
@@ -103,7 +103,6 @@ async def _restart_game(
 
     state.clear_initialized_fields()
     init_func(state, False)
-    print('Состояние после перезапуска:', state)
 
     cell_size = _utils.calculate_cell_size(state)
     _render_all(draw_func, state, cell_size, info_label, canvas, page)
@@ -130,7 +129,6 @@ def start(
 
     async def main_target(page: _ft.Page):
         state = _create_start_state(init_func)
-        print(f'Изначальное состояние: {state}')
 
         cell_size = _utils.calculate_cell_size(state)
         info_label = _create_info_label()
