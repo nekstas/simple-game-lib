@@ -1,7 +1,7 @@
-import src.lib._types as _types
-import src.lib._state as _state
-import src.lib._vec as _vec
-import src.lib._asserts as _asserts
+import lib._types as _types
+import lib._state as _state
+import lib._vec as _vec
+import lib._asserts as _asserts
 
 
 def generate_board(width: int, height: int, color: _types.Color) -> _types.Board:

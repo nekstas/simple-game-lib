@@ -3,7 +3,7 @@ import string as _string
 
 import flet as _ft
 
-import src.lib._types as _types
+import lib._types as _types
 
 WHITE: _types.Color = _ft.Colors.WHITE
 BLACK: _types.Color = _ft.Colors.BLACK

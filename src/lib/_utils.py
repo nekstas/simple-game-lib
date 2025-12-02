@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-import src.lib._limits as _limits
-import src.lib._state as _state
+import lib._limits as _limits
+import lib._state as _state
 
 
 def calculate_cell_size(state: _state.State):

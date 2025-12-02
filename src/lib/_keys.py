@@ -1,4 +1,4 @@
-import src.lib._types as _types
+import lib._types as _types
 
 KEY_UP: _types.Key = 'Arrow Up'
 KEY_DOWN: _types.Key = 'Arrow Down'
