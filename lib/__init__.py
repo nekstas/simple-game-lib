@@ -11,8 +11,7 @@ from lib._colors import (
     BLACK,
     RED,
     GREEN,
-    BLUE,
-    DEFAULT_COLOR,
+    BLUE
 )
 from lib._keys import (
     KEY_UP,
@@ -40,6 +39,10 @@ InitFunc = _typing.Callable[[_state.State, bool], None]
 OnKeyPressFunc = _typing.Callable[[_state.State, Key], None]
 StepFunc = _typing.Callable[[_state.State], StepResult]
 DrawFunc = _typing.Callable[[_state.State], None]
+
+DEFAULT_COLOR: Color = WHITE
+DEFAULT_STEPS_PER_SECOND: int = 20
+DEFAULT_RESTART_DELAY: float = 5
 
 
 class Vec(_vec.Vec):
@@ -101,7 +104,7 @@ def generate_board(
     return _impl.generate_board(width, height, color)
 
 
-def is_one_of_keys(pressed_key: Key, accepted_keys: set[Key]) -> bool:
+def is_one_of_keys(pressed_key: Key, accepted_keys: _typing.Collection[Key]) -> bool:
     """
     Проверяет, является ли нажатая клавиша `pressed_key`
     одной из ожидаемых клавиш `accepted_keys`.
@@ -135,27 +138,29 @@ def clear_board(
         color: Color = DEFAULT_COLOR
 ):
     """
-    Очищает всё поле, закрашивая его в цвет `color` (по умолчанию, белый)
+    Очищает всё поле, закрашивая его в цвет `color` (по умолчанию, стандартный цвет)
     """
     return _impl.clear_board(state, color)
 
 
 def start(
-        init_func: _flet_impl.InitFunc,
-        step_func: _flet_impl.StepFunc,
-        draw_func: _flet_impl.DrawFunc,
-        on_key_press_func: _flet_impl.OnKeyPressFunc,
-        steps_per_second: int,
-        restart_delay: float
+        init_func: InitFunc,
+        step_func: StepFunc,
+        draw_func: DrawFunc,
+        on_key_press_func: OnKeyPressFunc,
+        steps_per_second: int = DEFAULT_STEPS_PER_SECOND,
+        restart_delay: float = DEFAULT_RESTART_DELAY
 ):
     """
     Запускает игру с переданными функциями, выполняющими соответствующие действия.
     :param init_func: Функция, инициализирующая изначальное состояние.
+    Принимает вторым аргументом логическое значение, равное `True`,
+    если состояние инициализируется в первый раз, `False` иначе.
     :param step_func: Функция, выполняющая один игровой шаг.
     :param draw_func: Функция, отображающая игровое состояние на игровое поле.
     :param on_key_press_func: Функция, обрабатывающая нажатие клавиш.
     :param steps_per_second: Примерное число шагов (кадров) в секунду.
-    :param restart_delay: Количество секунд, спустя которое игра будет перезапущена после.
+    :param restart_delay: Количество секунд, спустя которое игра будет перезапущена после окончания.
     """
     _flet_impl.start(
         init_func, step_func, draw_func,

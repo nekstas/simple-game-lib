@@ -1,3 +1,5 @@
+import typing as _typing
+
 import lib._types as _types
 import lib._state as _state
 import lib._vec as _vec
@@ -17,7 +19,7 @@ def generate_board(width: int, height: int, color: _types.Color) -> _types.Board
     return board
 
 
-def is_one_of_keys(pressed_key: _types.Key, accepted_keys: set[_types.Key]) -> bool:
+def is_one_of_keys(pressed_key: _types.Key, accepted_keys: _typing.Collection[_types.Key]) -> bool:
     _asserts.assert_key_like(pressed_key)
     return pressed_key in accepted_keys
 
