@@ -13,7 +13,6 @@ BLUE: _types.Color = _ft.Colors.BLUE
 LIGHT_GREEN: _types.Color = _ft.Colors.LIGHT_GREEN
 LIGHT_BLUE: _types.Color = _ft.Colors.LIGHT_BLUE
 
-DEFAULT_COLOR: _types.Color = WHITE
 ALL_COLORS: set[_types.Color] = {WHITE, BLACK, RED, GREEN, BLUE, LIGHT_GREEN, LIGHT_BLUE}
 
 _HEX_COLOR_LENGTHS = {4, 7}
