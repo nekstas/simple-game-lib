@@ -128,7 +128,7 @@ def start(
     steps_delay: float = 1 / steps_per_second
 
     async def main_target(page: _ft.Page):
-        state = _create_start_state(init_func)
+        state = _create_start_state(init_func, page)
 
         cell_size = _utils.calculate_cell_size(state)
         info_label = _create_info_label()
