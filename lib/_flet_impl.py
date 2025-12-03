@@ -12,7 +12,7 @@ import lib._utils as _utils
 import lib._asserts as _asserts
 
 _TargetFunc = _typing.Callable[[_ft.Page], _Coroutine]
-InitFunc = _typing.Callable[[_state.State, bool], None]
+InitFunc = _typing.Callable[[_state.State, bool], str]
 OnKeyPressFunc = _typing.Callable[[_state.State, _types.Key], None]
 StepFunc = _typing.Callable[[_state.State], _types.StepResult]
 DrawFunc = _typing.Callable[[_state.State], None]
@@ -85,9 +85,9 @@ def _set_on_keyboard_event(state: _state.State, on_key_press_func: OnKeyPressFun
     page.on_keyboard_event = _on_keyboard_event
 
 
-def _create_start_state(init_func: InitFunc) -> _state.State:
+def _create_start_state(init_func: InitFunc, page: _ft.Page) -> _state.State:
     state = _state.State()
-    init_func(state, True)
+    page.title = init_func(state, True)
     initialized_fields = state.get_initialized_fields()
     assert initialized_fields == REQUIRED_FIELDS, \
         f'Поля {REQUIRED_FIELDS - initialized_fields} не были инициализированы.'
@@ -102,7 +102,7 @@ async def _restart_game(
     await _asyncio.sleep(restart_delay)
 
     state.clear_initialized_fields()
-    init_func(state, False)
+    page.title = init_func(state, False)
 
     cell_size = _utils.calculate_cell_size(state)
     _render_all(draw_func, state, cell_size, info_label, canvas, page)
