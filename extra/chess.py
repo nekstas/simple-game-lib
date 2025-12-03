@@ -2,6 +2,7 @@ from lib import *
 
 def init(state: State, is_first_time: bool):
     state.board = generate_board(8, 8)
+    return 'Шахматное поле'
 
 
 def step(state: State) -> StepResult:

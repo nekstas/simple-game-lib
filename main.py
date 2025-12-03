@@ -82,6 +82,8 @@ def init(state: State, is_first_time: bool):
     state.data.extra_length = 2
     state.data.apple = generate_apple(state)
 
+    return 'Змейка'
+
 
 def step(state: State) -> StepResult:
     snake: list[Vec] = state.data.snake
