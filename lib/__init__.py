@@ -35,7 +35,7 @@ StepResult = bool
 Board = list[list[Color]]
 
 # Различные сигнатуры функций
-InitFunc = _typing.Callable[[_state.State, bool], None]
+InitFunc = _typing.Callable[[_state.State, bool], str]
 OnKeyPressFunc = _typing.Callable[[_state.State, Key], None]
 StepFunc = _typing.Callable[[_state.State], StepResult]
 DrawFunc = _typing.Callable[[_state.State], None]
