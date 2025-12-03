@@ -26,6 +26,7 @@ def is_one_of_keys(pressed_key: _types.Key, accepted_keys: _typing.Collection[_t
 
 def set_cell_color(state: _state.State, pos: _vec.Vec, color: _types.Color):
     _asserts.assert_vector_in_board(pos, state)
+    _asserts.assert_color(color)
     state.board[pos.x][pos.y] = color
 
 

@@ -15,13 +15,13 @@ LIGHT_BLUE: _types.Color = _ft.Colors.LIGHT_BLUE
 
 ALL_COLORS: set[_types.Color] = {WHITE, BLACK, RED, GREEN, BLUE, LIGHT_GREEN, LIGHT_BLUE}
 
-_HEX_COLOR_LENGTHS = {4, 7}
+_HEX_COLOR_LENGTH = 7
 
 
 def is_hex_color(value: _typing.Any):
     return (
-        not isinstance(value, str) and
-        len(value) in _HEX_COLOR_LENGTHS and
+        isinstance(value, str) and
+        len(value) == _HEX_COLOR_LENGTH and
         value[0] == '#' and
         all(char in _string.hexdigits for char in value[1:])
     )
