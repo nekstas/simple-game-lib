@@ -14,6 +14,10 @@ def snake_eats_apple(state: State) -> bool:
     return state.data.snake[-1] == state.data.apple
 
 
+def is_lose(state):
+    snake = state.data.snake
+    return snake[-1] in snake[:-1]
+
 def get_center(state):
     return Vec(state.board_width, state.board_height) // 2
 
@@ -84,6 +88,10 @@ def step(state):
         state.data.apple = generate_apple(state)
 
     cut_the_snake(state)
+
+    if is_lose(state):
+        state.info_text = f'Вы проиграли! Очки: {len(snake)}'
+        return GAME_OVER
 
     update_best_score(state)
     state.info_text = f'Очки: {len(snake)}. Рекорд: {state.data.best_score}.'

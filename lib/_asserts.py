@@ -66,3 +66,8 @@ def assert_vector_in_board(value: _typing.Any, state: _state.State):
 def assert_info_text(value: _typing.Any):
     assert isinstance(value, str), 'Выводимый текст должен быть строкой.'
     assert len(value) <= _limits.InfoText.MAX_LENGTH
+
+
+def assert_title(value: _typing.Any):
+    assert isinstance(value, str), 'Название приложения должно быть строкой.'
+    assert len(value) <= _limits.Title.MAX_LENGTH

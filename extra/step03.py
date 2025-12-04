@@ -2,6 +2,7 @@ from lib import *
 
 
 def init(state, is_first_time):
+    state.board = generate_board(40, 30)
     return 'Змейка'
 
 

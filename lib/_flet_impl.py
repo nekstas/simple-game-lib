@@ -87,7 +87,11 @@ def _set_on_keyboard_event(state: _state.State, on_key_press_func: OnKeyPressFun
 
 def _create_start_state(init_func: InitFunc, page: _ft.Page) -> _state.State:
     state = _state.State()
-    page.title = init_func(state, True)
+
+    title = init_func(state, True)
+    _asserts.assert_title(title)
+    page.title = title
+
     initialized_fields = state.get_initialized_fields()
     assert initialized_fields == REQUIRED_FIELDS, \
         f'Поля {REQUIRED_FIELDS - initialized_fields} не были инициализированы.'
@@ -102,7 +106,10 @@ async def _restart_game(
     await _asyncio.sleep(restart_delay)
 
     state.clear_initialized_fields()
-    page.title = init_func(state, False)
+
+    title = init_func(state, False)
+    _asserts.assert_title(title)
+    page.title = title
 
     cell_size = _utils.calculate_cell_size(state)
     _render_all(draw_func, state, cell_size, info_label, canvas, page)

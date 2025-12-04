@@ -25,16 +25,25 @@ def create_new_head(state):
     snake[-1] %= state.board_size
 
 
+def cut_the_snake(state):
+    if state.data.extra_length > 0:
+        state.data.extra_length -= 1
+    else:
+        state.data.snake.pop(0)
+
+
 def init(state, is_first_time):
     state.board = generate_board(40, 30)
     state.data.snake = [get_initial_snake_pos(state)]
     state.data.dir = DIR_RIGHT
     state.data.new_dir = DIR_RIGHT
+    state.data.extra_length = 2
     return 'Змейка'
 
 
 def step(state):
     create_new_head(state)
+    cut_the_snake(state)
     return GAME_CONTINUE
 
 

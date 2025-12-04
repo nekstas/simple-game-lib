@@ -2,7 +2,7 @@ from lib import *
 
 
 def init(state, is_first_time):
-    pass
+    return 'Змейка'
 
 
 def step(state):

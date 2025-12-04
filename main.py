@@ -48,7 +48,7 @@ def generate_apple(state: State) -> Vec | None:
     empty_cells = get_empty_cells(state)
     if not empty_cells:
         return None
-    return rand_choice(get_empty_cells(state))
+    return rand_choice(empty_cells)
 
 
 def update_best_score(state: State):

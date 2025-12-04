@@ -9,4 +9,9 @@ class Board:
 class InfoText:
     MAX_LENGTH = 40
 
+
+class Title:
+    MAX_LENGTH = 50
+
+
 MAX_STEPS_PER_SECOND = 60

@@ -18,6 +18,26 @@ def get_initial_snake_pos(state):
     return get_center(state)
 
 
+def get_empty_cells(state):
+    snake_cells = set(state.data.snake)
+    result = []
+
+    for x in range(state.board_width):
+        for y in range(state.board_height):
+            pos = Vec(x, y)
+            if pos not in snake_cells:
+                result.append(pos)
+
+    return result
+
+
+def generate_apple(state):
+    empty_cells = get_empty_cells(state)
+    if not empty_cells:
+        return None
+    return rand_choice(empty_cells)
+
+
 def create_new_head(state):
     snake = state.data.snake
     state.data.dir = state.data.new_dir
@@ -38,6 +58,7 @@ def init(state, is_first_time):
     state.data.dir = DIR_RIGHT
     state.data.new_dir = DIR_RIGHT
     state.data.extra_length = 2
+    state.data.apple = generate_apple(state)
     return 'Змейка'
 
 
@@ -52,6 +73,7 @@ def draw(state):
 
     for pos in state.data.snake:
         set_cell_color(state, pos, GREEN)
+    set_cell_color(state, state.data.apple, RED)
 
 
 def on_key_press(state: State, key: Key):

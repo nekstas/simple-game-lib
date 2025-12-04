@@ -42,6 +42,11 @@ def generate_apple(state):
     return rand_choice(empty_cells)
 
 
+def update_best_score(state: State):
+    score = len(state.data.snake)
+    state.data.best_score = max(state.data.best_score, score)
+
+
 def create_new_head(state):
     snake = state.data.snake
     state.data.dir = state.data.new_dir
@@ -57,16 +62,21 @@ def cut_the_snake(state):
 
 
 def init(state, is_first_time):
+    if is_first_time:
+        state.data.best_score = 0
+
     state.board = generate_board(40, 30)
     state.data.snake = [get_initial_snake_pos(state)]
     state.data.dir = DIR_RIGHT
     state.data.new_dir = DIR_RIGHT
     state.data.extra_length = 2
     state.data.apple = generate_apple(state)
+
     return 'Змейка'
 
 
 def step(state):
+    snake = state.data.snake
     create_new_head(state)
 
     if snake_eats_apple(state):
@@ -74,6 +84,9 @@ def step(state):
         state.data.apple = generate_apple(state)
 
     cut_the_snake(state)
+
+    update_best_score(state)
+    state.info_text = f'Очки: {len(snake)}. Рекорд: {state.data.best_score}.'
     return GAME_CONTINUE
 
 

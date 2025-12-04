@@ -10,8 +10,12 @@ def is_opposite_direction(old_dir, new_dir):
     return old_dir == -new_dir
 
 
-def snake_eats_apple(state: State) -> bool:
+def snake_eats_apple(state):
     return state.data.snake[-1] == state.data.apple
+
+
+def is_win(state):
+    return state.data.apple is None
 
 
 def is_lose(state):
@@ -86,6 +90,11 @@ def step(state):
     if snake_eats_apple(state):
         state.data.extra_length += 1
         state.data.apple = generate_apple(state)
+
+    if is_win(state):
+        update_best_score(state)
+        state.info_text = f'Вы победили! Очки: {len(snake)}'
+        return GAME_OVER
 
     cut_the_snake(state)
 

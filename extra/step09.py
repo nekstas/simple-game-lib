@@ -10,6 +10,10 @@ def is_opposite_direction(old_dir, new_dir):
     return old_dir == -new_dir
 
 
+def snake_eats_apple(state: State) -> bool:
+    return state.data.snake[-1] == state.data.apple
+
+
 def get_center(state):
     return Vec(state.board_width, state.board_height) // 2
 
@@ -64,6 +68,11 @@ def init(state, is_first_time):
 
 def step(state):
     create_new_head(state)
+
+    if snake_eats_apple(state):
+        state.data.extra_length += 1
+        state.data.apple = generate_apple(state)
+
     cut_the_snake(state)
     return GAME_CONTINUE
 
